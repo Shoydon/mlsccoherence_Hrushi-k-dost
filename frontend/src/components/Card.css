@@ -1,0 +1,10 @@
+.hover :hover {
+    transform: scale(1.1);
+}
+
+.hover {
+    transition: all .2s ease-in-out;
+    width: 18rem;
+    height: auto;
+    box-shadow: 1px 1px #B2BEB5;
+}
