@@ -5,6 +5,10 @@ const Signin = () => {
   // State variables for storing form data
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
+  const [mobile, setMobile] = useState('');
+  const [aadhar, setAadhar] = useState('');
+  const [pan, setPan] = useState('');
+  const [address, setAddress] = useState('')
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [otp, setOtp] = useState('');
@@ -31,6 +35,8 @@ const Signin = () => {
     // Dummy implementation to send OTP to the user's email
     // In a real application, you would integrate with your backend to send OTP via email
     // For demo purposes, let's just set otpSent to true
+    let url = "http://localhost:8000/sendOTP/" + email
+    fetch(url).then((resp) => console.log(resp))
     setOtpSent(true);
     // You would typically send OTP to the user's email here
     // You may call an API endpoint to send the OTP
@@ -43,6 +49,10 @@ const Signin = () => {
     // In a real application, you would compare the entered OTP with the OTP sent to the user's email
     // For demo purposes, let's just check if the OTP matches a hardcoded value
     const hardcodedOTP = "1234"; // Hardcoded OTP for demo
+    // fetch("http://localhost:8000/signin", {
+    //   method: "POST",
+    //   body: JSON.stringify
+    // })
     if (otp === hardcodedOTP) {
       handleSubmit(); // Execute signin process
       console.log("Signin successful!");
@@ -55,7 +65,8 @@ const Signin = () => {
     <div className="signup-container">
       <h2>Sign In</h2>
       {!signinSuccess ? (
-        <form onSubmit={handleSubmit}> {/* Bind handleSubmit function to form submission */}
+        // <form onSubmit={handleSubmit}> {/* Bind handleSubmit function to form submission */}
+        <form action='http://localhost:8000/signin' method='POST'>
           <div className="form-group">
             <label htmlFor="username">Username:</label>
             <input
@@ -71,8 +82,53 @@ const Signin = () => {
             <input
               type="email"
               id="email"
+              name="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="mobile">Mobile:</label>
+            <input
+              type="text"
+              id="mobile"
+              name="mobile"
+              value={mobile}
+              onChange={(e) => setMobile(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="pan">Pan:</label>
+            <input
+              type="text"
+              id="pan"
+              name="pan"
+              value={pan}
+              onChange={(e) => setPan(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="aadhar">Aadhar:</label>
+            <input
+              type="text"
+              id="aadhar"
+              name="aadhar"
+              value={aadhar}
+              onChange={(e) => setAadhar(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="address">Address:</label>
+            <input
+              type="text"
+              id="address"
+              name="address"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
               required
             />
           </div>
@@ -81,6 +137,7 @@ const Signin = () => {
             <input
               type="password"
               id="password"
+              name="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -102,6 +159,7 @@ const Signin = () => {
               <input
                 type="text"
                 id="otp"
+                name="otp"
                 value={otp}
                 onChange={(e) => setOtp(e.target.value)}
                 required
@@ -109,7 +167,7 @@ const Signin = () => {
             </div>
           )}
           {otpSent ? (
-            <button type="button" onClick={handleSignin}>Sign In</button>
+            <button type="submit">Sign In</button>
           ) : (
             <button type="button" onClick={handleSendOTP}>Send OTP</button>
           )}

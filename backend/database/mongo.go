@@ -61,15 +61,20 @@ func (m *Mongo) AddUser(user user.User) error {
 	return nil
 }
 
-func(m *Mongo) GetUser(address string) (*user.User,error) {
+func(m *Mongo) GetUser(email string) (*user.User,error) {
 	userCollection := m.getCollection("DEFI", "users")
-	res := userCollection.FindOne(context.Background(), address)
+	log.Println("EMAIL:", email)
+	filter := bson.M{"email": email}
+	res := userCollection.FindOne(context.Background(), filter)
 
-	var user *user.User
-	err := res.Decode(user)
+	var user user.User
+	err := res.Decode(&user)
+	if err == mongo.ErrNoDocuments {
+		return nil, err
+	}
 	if err != nil {
 		return nil, err
 	}
 
-	return user, nil
+	return &user, nil
 }
