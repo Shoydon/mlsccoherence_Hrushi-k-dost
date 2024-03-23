@@ -66,15 +66,15 @@ contract FinanceApp {
 
     function borrow(uint _loanIndex, address _lender, uint _lenderIndex, uint _amount) public payable{
         // require();
-        allLoans[_loanIndex].amount -= _amount;
+        allLoans[_loanIndex].amount -= _amount * 1 ether;
         users[msg.sender].lenders.push(LoanTaken(_lender, _amount, users[_lender].loans[_lenderIndex].interest, block.timestamp));
         users[_lender].borrowers.push(LoanGiven(msg.sender, _amount, users[_lender].loans[_lenderIndex].interest, block.timestamp));
         payable(msg.sender).transfer(_amount);
     }
 
-    // function viewUserData(address _user) public view returns(address, Loan[] memory, LoanTaken[]memory, LoanGiven[] memory){
-    //     return (users[_user].address, )
-    // } 
+    function viewUserDataExpanded(address _user) public view returns(address, Loan[] memory, LoanTaken[]memory, LoanGiven[] memory){
+        return (users[_user].addr, users[_user].loans, users[_user].lenders, users[_user].borrowers);
+    } 
     function viewUserData(address _user) public view returns(User memory){
         return (users[_user]);
     } 
