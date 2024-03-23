@@ -41,4 +41,17 @@ contract BorrowLend {
         }
         payable(availableLoans[_loanId].owner).transfer(msg.value);
     }
+
+    function getAvailableLoans() public view returns (Loan[] memory) {
+        Loan[] memory allLoans = new Loan[](availableLoansKeys.length);
+        for(uint i = 0; i < availableLoansKeys.length; i++) {
+            allLoans[i] = availableLoans[availableLoansKeys[i]];
+        }
+        return allLoans;
+    }
+
+    function getAvailableLoansKeys() public view returns(bytes32[] memory) {
+        return availableLoansKeys;
+    }
+
 }
