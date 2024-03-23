@@ -1,0 +1,28 @@
+/* HomePage.css */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the left side */
+  justify-content: center;
+  height: 100vh;
+  background-image: url('../assets/Defi-Banner.png');
+  background-size: cover;
+  background-position: center;
+  text-align: center; /* Center text horizontally */
+  color: goldenrod; /* Change text color to golden */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow effect to text */
+}
+
+.container h1, .container h2 {
+    font-size: 60px;
+    margin-bottom: 5px;
+    font-size: 80px;
+    margin-bottom: 10px;
+      
+      
+}
+
+
+
+

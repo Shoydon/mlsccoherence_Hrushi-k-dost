@@ -10,9 +10,9 @@ export default function Navbar() {
         DfinanceApp
       </Link>
       <ul>
+        <CustomLink to="/">Home</CustomLink>
         <CustomLink to="/login">Login</CustomLink>
         <CustomLink to="/signin">Sign In</CustomLink>
-        <CustomLink to="/">Home</CustomLink>
         <CustomLink to="/payments">Payments</CustomLink>
       </ul>
     </nav>

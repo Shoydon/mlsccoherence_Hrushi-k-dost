@@ -1,38 +1,54 @@
 import React, { useState } from 'react';
-import './Payments.css'; // Corrected import statement for CSS file
+import './Payments.css'; // Import CSS file
 
 const Payments = () => {
+  const [paymentAddress, setPaymentAddress] = useState('');
   const [paymentAmount, setPaymentAmount] = useState('');
   const [paymentCompleted, setPaymentCompleted] = useState(false);
+  const [metaMaskAddress, setMetaMaskAddress] = useState('');
+
+  // Simulated function to retrieve MetaMask address
+  const getMetaMaskAddress = () => {
+    // Simulated address for testing purposes
+    const simulatedAddress = '0x1234567890abcdef';
+    setMetaMaskAddress(simulatedAddress);
+  };
 
   const handleSubmit = () => {
-    // Here, you can implement validation for the payment amount
-    // For simplicity, we'll directly use the entered payment amount
-    console.log('Payment amount:', paymentAmount);
-    // Implement payment processing logic here
-    // For example, send payment request to server or interact with smart contract
-    // After payment is made, set paymentCompleted to true to trigger the popup
-    setPaymentCompleted(true);
+    // Verify if MetaMask address matches the provided payment address
+    if (metaMaskAddress === paymentAddress) {
+      // Here, you can implement payment processing logic
+      console.log('Payment address verified:', paymentAddress);
+      console.log('Payment amount:', paymentAmount);
+      // After payment is verified, set paymentCompleted to true to trigger the popup
+      setPaymentCompleted(true);
+    } else {
+      alert('MetaMask address does not match the payment address.');
+    }
   };
 
   return (
-    <div className="container">
-      <h2 className="primary">Scan QR Code to Make Payment</h2>
-      <div className="qr-code">
-      <img src="%PUBLIC_URL%/assets/download.jpg" alt="QR Code"/>
-      </div>
+    <div className="container-p">
+      <h2 className="primary">Verify Payment with MetaMask</h2>
       <div className="payment-form">
+        <input
+          type="text"
+          placeholder="Enter payment address"
+          value={paymentAddress}
+          onChange={(e) => setPaymentAddress(e.target.value)}
+        />
         <input
           type="text"
           placeholder="Enter payment amount"
           value={paymentAmount}
           onChange={(e) => setPaymentAmount(e.target.value)}
         />
-        <button onClick={handleSubmit}>Submit Payment</button>
+        <button onClick={getMetaMaskAddress}>Get MetaMask Address</button>
+        <button onClick={handleSubmit}>Verify Payment</button>
       </div>
       {paymentCompleted && (
         <div className="popup">
-          <p>Payment of {paymentAmount} has been completed.</p>
+          <p>Payment of {paymentAmount} to {paymentAddress} has been verified.</p>
           <button onClick={() => setPaymentCompleted(false)}>Close</button>
         </div>
       )}
