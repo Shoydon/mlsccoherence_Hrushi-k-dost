@@ -1,0 +1,43 @@
+/* App.css */
+
+/* Style the navbar */
+.navbar {
+    background-color: #702963; /* Primary theme color */
+    height: 60px; /* Adjust the height of the navbar */
+  }
+  
+  .navbar-brand {
+    color: #fff; /* White text color for brand */
+    font-size: 1.5rem; /* Adjust the font size of the brand */
+  }
+  
+  .navbar-toggler {
+    border-color: #fff; /* White color for toggler icon */
+  }
+  
+  /* Style navigation links */
+  .navbar-nav .nav-link {
+    color: #fff; /* White text color for navigation links */
+    padding: 15px 20px; /* Adjust the padding for better spacing */
+  }
+  
+  /* Style active navigation link */
+  .navbar-nav .nav-link.active {
+    font-weight: bold; /* Bold font for active link */
+  }
+  
+  /* Add space between navigation links */
+  .navbar-nav {
+    display: flex;
+    align-items: center; /* Vertically center the navigation links */
+  }
+  
+  /* Style the search form */
+  .navbar-form {
+    margin-left: auto; /* Push the search form to the right */
+  }
+  
+  .form-control {
+    margin-right: 10px; /* Add spacing between search input and button */
+  }
+  

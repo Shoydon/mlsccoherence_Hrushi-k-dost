@@ -1,22 +1,32 @@
-import { Routes } from "react-router"
-import { BrowserRouter, Route } from "react-router-dom"
-import Home from "./components/Home"
-import Login from "./components/Login"
-import Payments from "./components/Payments"
-import Signin from "./components/Signin"
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Payments from "./components/Payments";
+import Login from "./components/Login";
+import Signin from "./components/Signin";
+import Home from "./components/Home";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/payments" element={<Payments />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signin" element={<Signin />} />
-        <Route index element={<Home />} />
-        <Route />
-      </Routes>
-    </BrowserRouter>
-  )
+    <>
+      <BrowserRouter>
+      <div>
+      <Navbar />
+      </div>
+       
+        <div className="content-container">
+          <div className="container">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signin" element={<Signin />} />
+              <Route path="/payments" element={<Payments />} />
+            </Routes>
+          </div>
+        </div>
+      </BrowserRouter>
+    </>
+  );
 }
 
-export default App
+export default App;

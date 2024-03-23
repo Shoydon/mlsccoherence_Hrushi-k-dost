@@ -1,0 +1,70 @@
+/* PaymentPage.css */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Center content vertically */
+    height: 100vh; /* Use full viewport height */
+  }
+  
+  .qr-code {
+    margin-top: 20px;
+    text-align: center; /* Center QR code horizontally */
+  }
+  
+  .qr-code img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .payment-form {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .payment-form input {
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .payment-form button {
+    padding: 10px 20px;
+    background-color: #702963;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Payments.css */
+
+.popup {
+    position: fixed;
+    top: 50%;
+    right: 20px; /* Adjust the distance from the right side */
+    transform: translateY(-50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+  }
+  
+  .popup p {
+    margin-bottom: 10px;
+  }
+  
+  .popup button {
+    padding: 10px 20px;
+    background-color: #702963;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
