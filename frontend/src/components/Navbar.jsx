@@ -1,9 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { useMatch, useResolvedPath } from "react-router-dom";
+import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import './Navbar.css';
 
 export default function Navbar() {
+  
   return (
     <nav className="nav">
       <Link to="/" className="site-title">
@@ -14,6 +14,8 @@ export default function Navbar() {
         <CustomLink to="/login">Login</CustomLink>
         <CustomLink to="/signin">Sign In</CustomLink>
         <CustomLink to="/payments">Payments</CustomLink>
+        <CustomLink to="/borrow">Borrow</CustomLink>
+        <CustomLink to="/lending">Lending</CustomLink>
       </ul>
     </nav>
   );

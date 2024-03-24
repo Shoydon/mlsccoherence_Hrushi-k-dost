@@ -30,6 +30,7 @@ const Payments = () => {
     }
   };
 
+
   const connectAccount = () => {
     if(window.ethereum) {
       window.ethereum.request({ method: "eth_requestAccounts"})
@@ -37,29 +38,25 @@ const Payments = () => {
         accountChangeHandler(res[0])
       })
 
-      // setProvider(new Web3BaseProvider.providers.HttpProvider("http://localhost:7545"))
+      window.ethereum.enable()
     }
   }
 
   const handleSendTxn = async (sender, receiver, amount) => {
-    const private_key = "0xef9a64aec86e24cfa1015fac2eed6a678efb23358904d361ea1663f8e71bc13e"
-    const web3 = new Web3(provider)
-
-    const account = web3.eth.accounts.privateKeyToAccount(private_key)
+    console.log("Txn")
+    console.log("Sender:", sender, "Receiver:", receiver, "value:", amount)
+    const web3 = new Web3(window.ethereum)
     const tx = {
-      from: sender, 
+      from : sender,
       to: receiver,
-      value: web3.utils.toWei(amount, "ether")
+      value: 1000,
+      gas: "30000"
     }
 
-    web3.eth.accounts.signTransaction(tx, private_key, (err, txHash) => {
-      if (err) {
-        console.error("Error sending transaction:", err)
-      }else {
-        console.log("Transaction Hash:", txHash)
-      }
-    })
-  
+    const txn = await web3.eth.sendTransaction(tx)
+    const txnHash = txn.transactionHash
+    console.log("Transaction hash:", txnHash)
+
   }
 
   const accountChangeHandler = (account) => {
