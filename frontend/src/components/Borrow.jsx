@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Web3 } from "web3"
 import Test from "../test.json"
-import CardTemplate from './Card'
 
 const Borrow = () => {
     const [currentAccount, setCurrentAccount] = useState(null)
@@ -68,14 +67,13 @@ const Borrow = () => {
           const web3 = new Web3(window.ethereum);
 
           const contract = new web3.eth.Contract(abi, contractAddress)
-          // const tx = {
-          //   from: currentAccount,
-          //   to: contractAddress,
-          //   value: Math.pow(10, 18) * 10,
-          // }
+          const tx = {
+            from: currentAccount,
+            to: contractAddress,
+          }
 
           // const res = await contract.methods.toLand(20, 10).send(tx)
-          const res = await contract.methods.getUserData().send()
+          const res = await contract.methods.getUserData().send(tx)
 
           console.log(res)
 
@@ -101,17 +99,14 @@ const Borrow = () => {
           }
         }
           return (
-              <div>
-                  <button onClick={connectWallet}>Connect wallet</button>
-                  <br />
-                  <button onClick={addUser}>Add User</button>
-                  <br />
-                  <button onClick={borrowing}>Borrowing</button>
-                  <br />
-                  <button onClick={getUserData}>Get Loan Data</button>
-                  <CardTemplate>
+              <div className='buttons' style={{marginLeft: "250px", scale: "1.3"}}>
+                  <button onClick={connectWallet} style={{marginRight: "50px"}}>Connect wallet</button>
+                  <button onClick={addUser} style={{marginRight: "50px"}}>Add User</button>
+                <button onClick={borrowing} style={{marginRight: "50px"}}>Borrowing</button>
+                  <button onClick={getUserData} style={{marginRight: "50px"}}>Get User Data</button>
+                  {/* <CardTemplate>
       
-                  </CardTemplate>
+                  </CardTemplate> */}
                   <br />
               </div>
           )
