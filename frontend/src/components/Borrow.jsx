@@ -12,7 +12,9 @@ const Borrow = () => {
           const abi = Test.abi
           console.log("ABI:", abi.length)
 
-          const web3 = new Web3(new Web3.providers.HttpProvider("https://sepolia.infura.io/v3/"))
+          // const web3 = new Web3(new Web3.providers.HttpProvider("https://sepolia.infura.io/v3/"))
+          const web3 = new Web3(window.ethereum);
+
           const contract = new web3.eth.Contract(abi, contractAddress)
           const tx = {
             from: currentAccount,

@@ -33,7 +33,7 @@ const Payments = () => {
 
   const connectAccount = () => {
     if(window.ethereum) {
-      window.ethereum.request({ method: "eth_requestAccounts"})
+      window.ethereum.request({ method: "eth_accounts"})
       .then((res) => {
         accountChangeHandler(res[0])
       })

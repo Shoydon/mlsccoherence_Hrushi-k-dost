@@ -1,0 +1,77 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "D:\\Shoy\\Hackathons\\Coherence\\mlsccoherence_Hrushi-k-dost\\hardhat\\contracts\\Lock.sol": {
+      "lastModificationDate": 1711250766788,
+      "contentHash": "6059b7750b5ea4f68029ef757e07d5bd",
+      "sourceName": "contracts/Lock.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "test"
+      ]
+    },
+    "D:\\Shoy\\Hackathons\\Coherence\\mlsccoherence_Hrushi-k-dost\\hardhat\\contracts\\Lock1.sol": {
+      "lastModificationDate": 1711250744728,
+      "contentHash": "dacf0d5cb5b45dc83086de5bc1c26c2c",
+      "sourceName": "contracts/Lock1.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": [
+        "Lock"
+      ]
+    }
+  }
+}
