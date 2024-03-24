@@ -11,6 +11,7 @@ contract BorrowLend {
         bool isPaid;
     }
 
+    
     mapping(bytes32 => Loan) public availableLoans;
     bytes32[] public availableLoansKeys;
 
