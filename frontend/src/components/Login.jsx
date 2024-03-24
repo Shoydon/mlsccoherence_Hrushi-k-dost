@@ -4,6 +4,8 @@ import './Login.css';
 const Login = () => {
   // State variables for storing username, password, and OTP
   const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [address, setAddress] = useState('');
   const [password, setPassword] = useState('');
   const [otp, setOtp] = useState('');
   const [otpSent, setOtpSent] = useState(false);
@@ -27,6 +29,7 @@ const Login = () => {
     // Dummy implementation to send OTP to the user's email
     // In a real application, you would integrate with your backend to send OTP via email
     // For demo purposes, let's just set otpSent to true
+    fetch("http://localhost:8000/sendOTP/" + email).then(resp => console.log(resp))
     setOtpSent(true);
   };
 
@@ -34,27 +37,51 @@ const Login = () => {
     // Dummy implementation to verify OTP
     // In a real application, you would compare the entered OTP with the OTP sent to the user's email
     // For demo purposes, let's just check if the OTP matches a hardcoded value
-    const hardcodedOTP = "1234"; // Hardcoded OTP for demo
-    if (otp === hardcodedOTP) {
-      handleSubmit(); // Execute login process
-      console.log("OTP verified successfully");
-    } else {
-      alert("Incorrect OTP. Please try again.");
-    }
+    fetch("http://localhost:8000/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        address: address,
+        email: email,
+        password: password,
+        otp: otp
+      })
+    })
+    .then(resp => {
+      if (resp.status == 200) {
+        return resp.json()
+      }
+    })
+    .then(data => {
+      if (data.success == true){
+        console.log("Logged in")
+      }
+    })
   };
 
   return (
-    <div className="login-container">
-      <h2>Login</h2>
+    <div className="login-container"> <h2>Login</h2>
       {!loginSuccess && (
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="username">Username:</label>
+            <label htmlFor="username">Address:</label>
             <input
               type="text"
-              id="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              id="address"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="username">Email:</label>
+            <input
+              type="text"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
